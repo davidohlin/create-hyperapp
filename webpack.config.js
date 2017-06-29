@@ -3,6 +3,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
 	entry: './src/main.js',
 	output: { 
@@ -13,9 +15,6 @@ module.exports = {
 		publicPath: "/",
 		contentBase: "public"
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin()
-	],
 	module: {
 		loaders: [
 			{
@@ -25,7 +24,15 @@ module.exports = {
 				query: {
 					presets: ['es2015']
 				}
-			}
+			},
+			{
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css-loader')
+            }
 		]
-	}
+	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new ExtractTextPlugin('main.css')
+	],
 }

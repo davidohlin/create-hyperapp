@@ -1,3 +1,4 @@
+import './styles/main.css'
 import { app, h } from 'hyperapp'
 
 app({
