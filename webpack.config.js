@@ -1,9 +1,10 @@
 'use strict'
 
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const DEV = process.env.NODE_ENV === 'development'
 
 module.exports = {
 	entry: './src/main.js',
@@ -12,8 +13,8 @@ module.exports = {
 		path: path.resolve(__dirname, 'public/')
 	},
 	devServer: {
-		publicPath: "/",
-		contentBase: "public"
+		publicPath: '/',
+		contentBase: 'public',
 	},
 	module: {
 		loaders: [
@@ -27,12 +28,18 @@ module.exports = {
 			},
 			{
                 test: /\.css$/,
+                loader: 'style-loader!css-loader',
                 loader: ExtractTextPlugin.extract('css-loader')
             }
 		]
 	},
 	plugins: [
+		new ExtractTextPlugin('main.css'),
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin('main.css')
+		...DEV ? [
+
+		] : [
+		
+		]
 	],
 }

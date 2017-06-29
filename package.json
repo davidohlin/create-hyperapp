@@ -9,6 +9,9 @@
   },
   "license": "MIT",
   "keywords": "hyperapp",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server"
+  },
   "engine": {
     "node": ">=6.9.1"
   },
@@ -24,6 +27,8 @@
   },
   "devDependencies": {
     "babel-preset-react": "^6.24.1",
-    "extract-text-webpack-plugin": "^2.1.2"
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "style-loader": "^0.18.2"
   }
 }
