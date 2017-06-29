@@ -3,14 +3,16 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const DEV = process.env.NODE_ENV === 'development'
 
 module.exports = {
+	target: "web",
 	entry: './src/main.js',
 	output: { 
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'public/')
+		path: DEV ? path.resolve(__dirname, 'public/') : path.resolve(__dirname, 'build/')
 	},
 	devServer: {
 		publicPath: '/',
@@ -30,16 +32,35 @@ module.exports = {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader',
                 loader: ExtractTextPlugin.extract('css-loader')
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader?minimize=false'
             }
 		]
 	},
 	plugins: [
 		new ExtractTextPlugin('main.css'),
-		new webpack.HotModuleReplacementPlugin(),
 		...DEV ? [
-
+			new webpack.HotModuleReplacementPlugin(),
 		] : [
-		
+			new HtmlWebpackPlugin({
+				template: 'public/index.html'
+			}),
+			new webpack.optimize.UglifyJsPlugin({
+				compress: {
+					dead_code: true,
+					screw_ie8: true,
+					unused: true,
+					warnings: false
+				},
+				mangle: {screw_ie8: true},
+				output: {
+					comments: false,
+					screw_ie8: true
+				},
+				sourceMap: true
+			})
 		]
 	],
 }
