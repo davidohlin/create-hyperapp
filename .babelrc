@@ -3,9 +3,9 @@
   "plugins": [
     [
       "transform-react-jsx",
-    {
-      "pragma": "h"
-    }
+      {
+        "pragma": "h"
+      }
     ]
   ]
 }
