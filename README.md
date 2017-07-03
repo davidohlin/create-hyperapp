@@ -17,7 +17,7 @@ $ npm run start
 
 And go to [http://localhost:8080](http://localhost:8080) :tada:
 
-## Development
+## Production
 
 ```sh
 $ npm run build
