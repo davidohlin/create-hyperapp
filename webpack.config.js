@@ -32,21 +32,18 @@ module.exports = {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader',
                 loader: ExtractTextPlugin.extract('css-loader')
-            },
-            {
-                test: /\.html$/,
-                loader: 'html-loader?minimize=false'
             }
 		]
 	},
 	plugins: [
 		new ExtractTextPlugin('main.css'),
+		new HtmlWebpackPlugin({
+			title: 'Hyperapp',
+			template: 'public/index.html'
+		}),
 		...DEV ? [
 			new webpack.HotModuleReplacementPlugin(),
 		] : [
-			new HtmlWebpackPlugin({
-				template: 'public/index.html'
-			}),
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					dead_code: true,
