@@ -1,11 +1,13 @@
 {
   "name": "create-hyperapp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Boilerplate for hyperapp",
+  "license": "MIT",
+  "repository": "davidohlin/create-hyperapp",
   "author": {
-    "name": "David Öhlin",
+    "name": "davidohlin",
     "email": "hello@davidohlin.se",
-    "url": "davidohl.in"
+    "url": "github.com/davidohlin"
   },
   "license": "MIT",
   "keywords": "hyperapp",

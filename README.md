@@ -27,4 +27,4 @@ Builds the production bundle and outputs it to `./build`.
 
 ## License
 
-MIT © [David Öhlin](http://davidohl.in)
+MIT © [David Öhlin](http://github.com/davidohlin)

@@ -10,7 +10,7 @@ const DEV = process.env.NODE_ENV === 'development'
 module.exports = {
 	target: 'web',
 	entry: './src/main.js',
-	output: { 
+	output: {
 		filename: 'bundle.js',
 		path: DEV ? path.resolve(__dirname, 'public/') : path.resolve(__dirname, 'build/')
 	},
